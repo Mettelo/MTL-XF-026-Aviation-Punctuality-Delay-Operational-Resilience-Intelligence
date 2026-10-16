@@ -6,9 +6,17 @@ This is a **simulated confidential-client engagement using official public/open 
 
 ## Business problem and commission
 
-Operations leaders receive performance summaries that may mix route volumes, cancellation exposure and operated-flight delay. A small route can appear worse than a busy route on a simple row average, while combining airport records can count domestic movements twice. Leadership needs a defensible comparison before deciding which operating patterns deserve a joint resilience investigation.
+The simulated airport operations and aviation strategy directorate brings performance managers and operations leads together for a monthly resilience review. The immediate task is to choose which airport/airline operating patterns deserve a joint diagnostic discussion.
+
+The Director of Airport Operations & Resilience needs to commission the right operational investigations rather than react to the worst percentage in the monthly pack. Current summaries can elevate small-volume routes, mix cancellation exposure with operated-flight delay, and hide a persistent airport/airline pattern behind changes in flight mix.
+
+The resulting agenda can focus on a short-lived or low-volume outlier while a higher-volume recurring issue receives less attention. The commission is a flight-weighted performance review for January–August 2026 that shows persistence, coverage and sensitivity before identifying cases for joint operations discussion. Delay causes and operational remedies require evidence beyond the CAA tables.
 
 > Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
+
+**Required management handover:** An airport/airline performance pack with a flight-weighted scorecard, separate cancellation and matched-flight delay measures, coverage diagnostics, threshold sensitivity and a joint-investigation brief for each selected case.
+
+See [the management use case](BUSINESS_CONTEXT.md#practical-management-use-case) for how the review meeting uses this evidence.
 
 ## Core deliverable boundary
 

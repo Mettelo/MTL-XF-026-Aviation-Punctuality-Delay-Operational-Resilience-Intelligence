@@ -10,9 +10,15 @@
 
 > This is a **simulated confidential-client engagement using official public/open data**. Client and stakeholder role labels describe a fictional engagement; do not claim a real external Mettelo customer, employment, endorsement or privileged data access. No raw data is uploaded by this specification update.
 
+## Business setting
+
+The simulated airport operations and aviation strategy directorate brings performance managers and operations leads together for a monthly resilience review. The immediate task is to choose which airport/airline operating patterns deserve a joint diagnostic discussion.
+
 ## Business problem
 
-Operations leaders receive performance summaries that may mix route volumes, cancellation exposure and operated-flight delay. A small route can appear worse than a busy route on a simple row average, while combining airport records can count domestic movements twice. Leadership needs a defensible comparison before deciding which operating patterns deserve a joint resilience investigation.
+The Director of Airport Operations & Resilience needs to commission the right operational investigations rather than react to the worst percentage in the monthly pack. Current summaries can elevate small-volume routes, mix cancellation exposure with operated-flight delay, and hide a persistent airport/airline pattern behind changes in flight mix.
+
+The resulting agenda can focus on a short-lived or low-volume outlier while a higher-volume recurring issue receives less attention. The commission is a flight-weighted performance review for January–August 2026 that shows persistence, coverage and sensitivity before identifying cases for joint operations discussion. Delay causes and operational remedies require evidence beyond the CAA tables.
 
 ## Commissioned decision
 
@@ -20,9 +26,13 @@ Operations leaders receive performance summaries that may mix route volumes, can
 
 ## Practical use
 
-The monthly review opens an airport/airline segment that has missed the team's declared punctuality reference in at least three months. The Performance Manager compares flight-weighted results and shows whether the signal survives a higher volume gate. The Operations Lead then asks for disruption and schedule evidence; the dashboard alone does not assign responsibility to an airline or airport.
+At the monthly review, the Airport Performance Manager opens a shortlisted airport/airline case and shows its eight-month coverage, eligible flights and monthly punctuality pattern. The Operations Planning Lead compares the case under the 100- and 250-flight gates and checks whether the concern remains after flight weighting and route-mix inspection.
 
-The full [business context](project/BUSINESS_CONTEXT.md) names operational stakeholders, decisions, risks and proposed benefit measures.
+The Director commissions a joint resilience diagnostic only when the evidence is sufficiently stable, assigning an Operations owner to request schedule, weather and disruption logs. A low-volume or incomplete case remains on a watchlist. The output frames a specific operational question; it does not assign fault or prescribe a staffing change from the public performance data.
+
+**Management handover:** An airport/airline performance pack with a flight-weighted scorecard, separate cancellation and matched-flight delay measures, coverage diagnostics, threshold sensitivity and a joint-investigation brief for each selected case.
+
+The full [business context](project/BUSINESS_CONTEXT.md) sets out stakeholders, decisions, evidence limits and proposed benefit measures.
 
 ## What must be delivered
 

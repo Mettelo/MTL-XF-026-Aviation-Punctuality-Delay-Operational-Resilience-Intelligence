@@ -6,15 +6,19 @@
 
 This fictional directorate/board is an engagement scenario, not an assertion of a real client's circumstances. The source data remains official public/open data.
 
+## Business setting and immediate planning need
+
+The simulated airport operations and aviation strategy directorate brings performance managers and operations leads together for a monthly resilience review. The immediate task is to choose which airport/airline operating patterns deserve a joint diagnostic discussion.
+
 ## Business problem
 
-Operations leaders receive performance summaries that may mix route volumes, cancellation exposure and operated-flight delay. A small route can appear worse than a busy route on a simple row average, while combining airport records can count domestic movements twice. Leadership needs a defensible comparison before deciding which operating patterns deserve a joint resilience investigation.
+The Director of Airport Operations & Resilience needs to commission the right operational investigations rather than react to the worst percentage in the monthly pack. Current summaries can elevate small-volume routes, mix cancellation exposure with operated-flight delay, and hide a persistent airport/airline pattern behind changes in flight mix.
+
+The resulting agenda can focus on a short-lived or low-volume outlier while a higher-volume recurring issue receives less attention. The commission is a flight-weighted performance review for January–August 2026 that shows persistence, coverage and sensitivity before identifying cases for joint operations discussion. Delay causes and operational remedies require evidence beyond the CAA tables.
 
 ## Why the current process is insufficient
 
-The current scenario relies on separately prepared reports without a common source/metric contract. The material failure to prevent is specific: Wrong weighting, incompatible denominators, report variants and duplicate airport observations can reverse punctuality comparisons.
-
-This creates uncertainty over which cases need investigation and which comparisons should be rejected. No quantified loss, backlog, budget deficit or service failure is invented as a client fact.
+Different teams bring mean delay, punctuality percentages and cancellation summaries without a shared eligible-flight basis. A simple average across route rows gives small and large operations equal weight. The replacement must retain each denominator, distinguish airport movements from unique journeys, and show whether a case survives the declared minimum-flight sensitivity test.
 
 ## Stakeholders and decisions
 
@@ -32,15 +36,15 @@ Which airport, airline and supported route combinations show persistent punctual
 
 ## Practical management use case
 
-The monthly review opens an airport/airline segment that has missed the team's declared punctuality reference in at least three months. The Performance Manager compares flight-weighted results and shows whether the signal survives a higher volume gate. The Operations Lead then asks for disruption and schedule evidence; the dashboard alone does not assign responsibility to an airline or airport.
+At the monthly review, the Airport Performance Manager opens a shortlisted airport/airline case and shows its eight-month coverage, eligible flights and monthly punctuality pattern. The Operations Planning Lead compares the case under the 100- and 250-flight gates and checks whether the concern remains after flight weighting and route-mix inspection.
+
+The Director commissions a joint resilience diagnostic only when the evidence is sufficiently stable, assigning an Operations owner to request schedule, weather and disruption logs. A low-volume or incomplete case remains on a watchlist. The output frames a specific operational question; it does not assign fault or prescribe a staffing change from the public performance data.
 
 ## Current-to-target workflow
 
-1. **Before review:** analyst registers the approved files, coverage and definitions; steward checks the cohort and unresolved exceptions.
-2. **At review:** Director of Airport Operations & Resilience opens the overview, then inspects diagnostics and the underlying eligible population before considering a case.
-3. **Challenge:** the relevant stakeholder compares the alternative scenario and asks whether the signal survives missingness, comparability and denominator checks.
-4. **Action:** each accepted case records investigation type, responsible service role, missing evidence, next review and what finding would reverse the recommendation.
-5. **Follow-up:** the next monthly airport/airline performance review records evidence received and the decision, without claiming the analytical signal itself caused an improvement.
+**Target management handover:** An airport/airline performance pack with a flight-weighted scorecard, separate cancellation and matched-flight delay measures, coverage diagnostics, threshold sensitivity and a joint-investigation brief for each selected case.
+
+The meeting's decision record must contain: the selected case and reporting period; the source-backed finding; the decision to investigate, watch, clarify or close; the responsible stakeholder role; the specific additional evidence requested; and the next review point. Add the evidence that would reverse or narrow the recommendation. A watchlist or no-action conclusion is valid when supported; do not fill the shortlist simply to reach ten cases.
 
 ## Required analytical response
 
@@ -56,7 +60,9 @@ The monthly review opens an airport/airline segment that has missed the team's d
 
 ## Proposed benefit monitoring
 
-At kickoff, record a baseline review process and propose measures for: time to regenerate the agreed evidence pack; proportion of agenda recommendations with a complete evidence chain; and proportion of accepted investigations with a role owner and next review. The target for recommendation traceability and ownership is 100%; regeneration time is measured during the independent rerun, with no fabricated pre-project baseline or claimed reduction. These are proposed management measures, not achieved service benefits.
+Measure whether every shortlisted case retains eligible-flight denominators, eight-month coverage and both volume-gate results; target 100%. Simulated users must explain why an unweighted low-volume outlier and a persistent high-volume case receive different review treatment. Reduced delays or operating cost require later operational evaluation.
+
+Record the preparation and review baseline at kickoff, then measure evidence-pack regeneration during the independent rerun. No pre-project time saving or achieved operational benefit is assumed. The eight-week engagement is assessed on the usability and traceability of the decision pack; later service outcomes require separate follow-up.
 
 ## Scope and evidence limits
 
