@@ -1,139 +1,126 @@
-# MTL-XF-026 — Required deliverables
+# MTL-XF-026 — Required deliverables and metric contracts
 
-**Commissioned decision:** Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
+**Decision:** Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?  
+**Business acceptance:** Director of Airport Operations & Resilience  
+**Core scope:** Eight agreed full-analysis CSVs, January–August 2026. Use one consistent report variant: combined arrival/departure Full Analysis unless a documented variant change is approved. Fix a shortlist of airport/airline segments after profiling; preserve supported route detail for diagnostics. Separate matched-flight delay denominators from all-flight band and cancellation denominators.
 
-All locations below refer to the team's delivery repository. The master repository defines the requirements and contains no completed analysis. Owners are assigned from [the project roles](PROJECT_BRIEF.md).
+All artefact locations refer to the team repository. Deliver the core before optional extensions. [The source register](../data/SOURCE_REGISTER.md) documents evidence status; required field support is a G1 release condition.
 
-## D1 — Discovery & decision requirements
+## D1 — Discovery & requirements
 
-**Due:** Week 1  
-**Team artefact location:** `docs/01-discovery/`
+**Due:** Week 1 · **Location:** `docs/01-discovery/` · **Owner:** Business Analyst
 
-Decision statement; stakeholder map; as-is reporting to investigation-review process; at least eight prioritised requirements. Answer these questions: Which airport/airline combinations have persistent rather than one-month delays? How do flight volumes and route mix affect apparent performance? Which delay bands or cancellation measures contribute to deterioration? Does a minimum-volume rule alter the investigation shortlist? What operational cause evidence is needed before attributing delay to an organisation?
+Map the monthly airport/airline performance review, stakeholder needs, current reporting failures and target decision. Eight prioritised requirements must cover the business questions, scope gates and usable outputs.
 
-**Acceptance evidence:** All requirements have an owner, priority, deliverable and test ID; domain analyst approves scope.
+**Pass evidence:** Each requirement has an accountable user, artefact, test and acceptance owner.
 
-## D2 — Governed sources & cohort
+## D2 — Sources, governance & cohort contract
 
-**Due:** Week 2  
-**Team artefact location:** `docs/02-data-governance/; data/`
+**Due:** Week 2 · **Location:** `data/; docs/02-data-governance/` · **Owner:** Data Governance Analyst
 
-Freeze all eight agreed CAA monthly full-analysis CSVs for January–August 2026. The eight months are the core cohort; do not describe them as a full year or infer annual seasonality. Historical 2025 files are optional extensions with their own source records. Register exact files, metadata, licences, checksums, coverage and critical fields; record rejection of unavailable dimensions.
+Complete the source-to-deliverable support matrix and classify core, fallback and optional inputs. Eight agreed full-analysis CSVs, January–August 2026. Use one consistent report variant: combined arrival/departure Full Analysis unless a documented variant change is approved. Fix a shortlist of airport/airline segments after profiling; preserve supported route detail for diagnostics. Separate matched-flight delay denominators from all-flight band and cancellation denominators.
 
-**Acceptance evidence:** 100% of inputs registered; no claimed freeze until acquisition evidence exists.
+**Pass evidence:** Every used input has provenance, exact version/coverage, licence evidence and SHA-256; conditional scope cannot be signed off without supporting fields.
 
-## D3 — Reproducible analytical model
+## D3 — Reproducible model & ingestion
 
-**Due:** Week 3  
-**Team artefact location:** `src/; sql/; docs/03-data-model/`
+**Due:** Week 3 · **Location:** `src/; sql/; docs/03-data-model/` · **Owner:** Data Engineer
 
-Month × reporting airport × airline × supported route/destination × service/flight category and all other published dimensions. Preserve scheduled, actual, cancelled and matched-flight denominator distinctions. Deliver load, type checks, hierarchy handling, lineage, exclusions and environment instructions.
+Implement raw preservation, selection, schema checks, curated facts and dimensions. Month × reporting airport × airline × supported route/destination × service/flight category and all other published dimensions. Preserve scheduled, actual, cancelled and matched-flight denominator distinctions.
 
-**Acceptance evidence:** A second member regenerates equivalent curated outputs from identical inputs; no unexplained duplicate analytical keys.
+**Pass evidence:** Zero unexplained duplicate keys or join inflation; every input row accounted for as retained/excluded/quarantined.
 
-## D4 — Quality & reconciliation
+## D4 — Quality, source reconciliation & exceptions
 
-**Due:** Week 3  
-**Team artefact location:** `docs/04-data-quality/; tests/`
+**Due:** Week 3 · **Location:** `tests/; docs/04-data-quality/` · **Owner:** Independent reviewer + domain specialist
 
-Profile missingness, suppression, valid values, keys and join coverage. Confirm one source file for each of the eight months and fail on missing or repeated months. Reconcile five airport/airline figures against source cells. Demonstrate flight-weighted average delay differs correctly from an unweighted row mean. Test zero eligible flights, a low-volume route and cancellations excluded from the punctuality denominator.
+Execute source, denominator, missingness, boundary and linkage checks against the risk 'Wrong weighting, incompatible denominators, report variants and duplicate airport observations can reverse punctuality comparisons.'
 
-**Acceptance evidence:** Every input row is accounted for as retained, excluded or quarantined; five published cells reconcile within declared rounding.
+**Pass evidence:** Reconcile five source values from at least two periods or segments; retain source coordinates, precision and explanations for non-additive totals.
 
-## D5 — KPI catalogue
+## D5 — Governed metric catalogue
 
-**Due:** Week 4  
-**Team artefact location:** `docs/05-kpi-catalogue/`
+**Due:** Week 4 · **Location:** `docs/05-kpi-catalogue/` · **Owner:** Domain specialist + Data Governance Analyst
 
-Define all 8 measures listed below with formula, grain, denominator, unit, source fields, exclusions, owner, refresh and limitations.
+Implement the 8 metric contracts below; distinguish unconditional core metrics from gated extensions.
 
-**Acceptance evidence:** 100% headline metrics trace to source fields and tested transformations; conditional unavailable measures are explicitly marked.
+**Pass evidence:** Each core metric has purpose, raw fields, formula, grain, denominator/unit, missing/zero handling, owner, refresh and test; conditional items have explicit eligibility or unavailable status.
 
-## D6 — Domain analytical assessment
+## D6 — Domain assessment
 
-**Due:** Week 5  
-**Team artefact location:** `analysis/; docs/06-analysis/`
+**Due:** Week 5 · **Location:** `analysis/; docs/06-analysis/` · **Owner:** Domain analyst
 
 Separate volume, punctuality, delay distribution and cancellation measures; retain route mix and matched-flight coverage. Show three-month persistence and eight-month coverage for each airport/airline segment.
 
-**Acceptance evidence:** At least five evidence-backed findings state period, population, comparison, magnitude, uncertainty and limitation; negative findings count.
+**Pass evidence:** At least five supported findings answer the five questions or document a genuine evidence gap; each includes magnitude, scope, comparison and limitation.
 
-## D7 — Investigation decision framework
+## D7 — Investigation framework & scenarios
 
-**Due:** Week 6  
-**Team artefact location:** `docs/07-decision-framework/`
+**Due:** Week 6 · **Location:** `docs/07-decision-framework/` · **Owner:** Director of Airport Operations & Resilience (business acceptance)
 
-Produce up to ten resilience-investigation cases under at least two minimum-flight thresholds and compare weighted with unweighted summaries. Record eligibility, thresholds, weights if used, reason codes and manual review triggers.
+Baseline minimum = 100 eligible flights per airport/airline month; sensitivity = 250. Require at least three eligible months and display coverage out of eight. Compare a declared adverse-punctuality reference consistently across months and order by flight-weighted delay burden. Record excluded low-volume cases. Volume gates are simulated design choices and must not be described as CAA standards.
 
-**Acceptance evidence:** Every shortlisted case has metrics, rationale, owner and evidence gaps; at least two scenarios compared; fewer than ten is valid where evidence is insufficient.
+**Pass evidence:** Publish eligibility, component definitions, scenario differences and up to ten supported cases; every case names a service role, evidence request and review trigger.
 
-## D8 — BI decision-support product
+## D8 — Decision-support BI
 
-**Due:** Draft Week 6; final Week 7  
-**Team artefact location:** `dashboard/`
+**Due:** Draft Week 6; final Week 7 · **Location:** `dashboard/` · **Owner:** BI Developer
 
-Executive overview answering 'Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?' plus diagnostic and data-quality views; visible periods, units, denominator notes, resettable filters and accessible labels.
+Build overview, diagnostic and quality pages for the monthly airport/airline performance review. Show period, units, definitions, missingness and core/extension status.
 
-**Acceptance evidence:** Five headline measures reconcile; every filter tested; export screenshots/PDF plus reproducible build or free access instructions.
+**Pass evidence:** Five headline values reconcile; every visible filter and reset tested; accessible static export plus free review/build path.
 
-## D9 — Independent assurance & UAT
+## D9 — Assurance & simulated UAT
 
-**Due:** Week 7  
-**Team artefact location:** `docs/08-assurance-uat/`
+**Due:** Week 7 · **Location:** `docs/08-assurance-uat/` · **Owner:** Independent reviewer
 
-At least ten scenarios including the four project-specific tests below; requirement-to-test matrix, expected/actual evidence, defect log and simulated stakeholder feedback.
+Execute DT1–DT10 below, plus any tool-specific calculations and filter tests. Record expected/actual evidence, requirement links and defects.
 
-**Acceptance evidence:** No unresolved critical/high defect; accepted lower-severity limitations have a named reviewer and explicit impact.
+**Pass evidence:** All ten mandatory domain cases evidenced; no critical/high issue remains; accepted lower-impact limitations have named review.
 
 ## D10 — Technical & operational handover
 
-**Due:** Week 8  
-**Team artefact location:** `docs/09-technical-handover/`
+**Due:** Week 8 · **Location:** `docs/09-technical-handover/` · **Owner:** Data Engineer + a second-member reviewer
 
-Clean setup, architecture, frozen input manifest, run/refresh steps, output checks, troubleshooting and change-control process for Aviation Punctuality, Delay & Operational Resilience Intelligence.
+Provide environment, immutable manifest, end-to-end run, output checks, troubleshooting and refresh/change process.
 
-**Acceptance evidence:** Another member reproduces the core outputs without undocumented edits and records environment, duration and discrepancies.
+**Pass evidence:** A second member regenerates equivalent core outputs without undocumented edits and records checks, environment, duration and result.
 
-## D11 — Executive recommendation
+## D11 — Executive briefing & presentation
 
-**Due:** Week 8  
-**Team artefact location:** `deliverables/`
+**Due:** Week 8 · **Location:** `deliverables/` · **Owner:** Business Analyst + specialist service roles
 
-Maximum two-page briefing and 15–20 minute presentation: commissioned decision, five findings, investigation shortlist, sensitivity, missing evidence, responsibilities and next review.
+Deliver maximum two-page briefing and 15–20 minute presentation to Director of Airport Operations & Resilience: decision, five findings, scenario comparison, investigation actions, evidence gaps and next review.
 
-**Acceptance evidence:** Every quantitative claim links to an artefact/metric; no unsupported causal, policy or operational guarantee.
+**Pass evidence:** Every numeric claim links to tested evidence; explicitly show a case where action is not yet supported.
 
 ## D12 — Contribution & delivery record
 
-**Due:** Weekly; final Week 8  
-**Team artefact location:** `CONTRIBUTIONS.md; delivery issues/PRs`
+**Due:** Weekly; final Week 8 · **Location:** `CONTRIBUTIONS.md` · **Owner:** Delivery Lead
 
-Record who delivered and reviewed each MTL-XF-026 work package, including domain, governance, engineering, BI and assurance contributions.
+Link actual authored work, reviews, issues/PRs/commits and presentation/handover contributions for every member.
 
-**Acceptance evidence:** Every member links to substantive artefacts and review/presentation evidence; commit count alone is insufficient.
+**Pass evidence:** All responsibilities have owners and evidence; commit count alone is insufficient.
 
-## Required KPI definitions
+## Metric contracts — authoritative definitions
 
-| Metric | Required definition / calculation |
+| Metric | Definition / support condition |
 | --- | --- |
 | Eligible flight volume | Published matched/eligible flights under the source definition; identify flights excluded from punctuality calculation. |
-| On-time share | Published on-time percentage under the exact CAA tolerance; recompute only with compatible numerator and denominator. |
+| On-time band share | Use the exact CAA bands and documented denominator; label an early-to-15-minutes-late aggregate explicitly if reconstructed. Do not silently switch to matched-flight percentages. |
 | Average delay minutes | Flight-weighted average = sum(mean delay × eligible flights) / sum(eligible flights) for compatible rows. |
-| Severe-delay share | Published or reconstructed delay-band share for a declared threshold; do not invent unreported bands. |
-| Cancellation share | 100 × cancelled flights / publisher-compatible scheduled flights, only if both are available. |
+| Severe-delay share | Aggregate the published bands for a declared threshold using their documented all-flight basis; preserve cancellation/unmatched context. |
+| Cancellation share | Use the published cancellation percentage or 100 × cancelled / compatible total flights under CAA definitions; show the denominator explicitly. |
 | Month-to-month change | Current on-time share minus previous comparable-month share, in percentage points. |
 | Persistent-pressure flag | Adverse threshold exceeded in at least three observed months; report available months and volume gate. |
 | Monthly coverage | Observed eligible months / eight required cohort months. |
 
-For every metric record business purpose, formula, source fields, grain, unit, numerator/denominator, exclusions, suppression, zero-base behaviour, owner, refresh and test evidence. Do not populate conditional metrics from invented fields.
+For each metric add source ID and actual raw fields, business purpose, formula, grain, valid population, unit, numerator/denominator, hierarchy, suppression/zero/missing handling, owner, refresh and test evidence. Verify source rounding before setting a reconciliation tolerance. A conditional item is not silently promoted into core; a core requirement is not silently waived.
 
-## Mandatory domain scenarios
+## Project-specific outcomes
 
-1. Confirm one source file for each of the eight months and fail on missing or repeated months.
-2. Reconcile five airport/airline figures against source cells.
-3. Demonstrate flight-weighted average delay differs correctly from an unweighted row mean.
-4. Test zero eligible flights, a low-volume route and cancellations excluded from the punctuality denominator.
+1. Exactly eight unique monthly inputs are registered using the same report variant.
+2. All-flight shares and matched-flight mean delay retain their respective denominators.
+3. Every shortlisted segment shows eligible months, flight volume and sensitivity to 100/250-flight gates.
 
-## Review gates
-
-Week 2: cohort and source approval. Week 4: model, DQ and metrics approval. Week 6: analytical and decision-framework review. Week 8: UAT, independent rerun and final panel review. Record reviewer, date, artefact version and decision at every gate.
+See [DT1–DT10 and investigation rules](ACCEPTANCE_CRITERIA.md) for worked pass/fail cases. Source schemas, specific period selections and reference versions must be signed at G1. Keep calculation definitions here; other guidance pages link to this contract rather than maintaining competing copies.

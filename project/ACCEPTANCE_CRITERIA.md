@@ -1,47 +1,59 @@
-# MTL-XF-026 — Acceptance criteria
+# MTL-XF-026 — Acceptance criteria and domain tests
 
-**Decision to support:** Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
+**Business decision owner:** Director of Airport Operations & Resilience. **Decision:** Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
 
-These criteria assess delivery quality; they do not certify real operational outcomes. Complete a requirement → deliverable → test → evidence → reviewer matrix in the team repository.
+## Delivery sign-off
 
-| ID | Deliverables | Pass condition | Acceptance owner |
+| ID | Deliverables | Required pass evidence | Acceptance owner |
 | --- | --- | --- | --- |
-| AC1 | D1 | Eight or more prioritised requirements map to a named user, deliverable, acceptance test and reviewer. | Business Analyst / simulated sponsor |
-| AC2 | D2 | 100% of core and extension inputs have exact source URL, actual version/coverage, retrieval timestamp, licence evidence, byte size and SHA-256; mutable endpoints have one approved snapshot. | Data Governance Analyst |
-| AC3 | D3 | A distinct reviewer reruns the same frozen inputs in the documented environment and obtains equivalent curated rows and values; explain any nondeterministic ordering. | Data Engineer / independent reviewer |
-| AC4 | D4 | Every input row is accounted for in retained/excluded/quarantined counts; zero unexplained key duplicates; all join multiplication is quantified. | Data Engineer / domain analyst |
-| AC5 | D4–D5 | At least five source cells across two periods or segments reconcile exactly for counts and within source precision for rounded measures. Each tolerance is declared before testing. | Domain analyst / assurance reviewer |
-| AC6 | D5 | All 8 listed measures have definitions, source lineage and edge-case behaviour; conditional unavailable metrics show an explicit reason, no fabricated value. | Data Governance Analyst / BI Developer |
-| AC7 | D6 | At least five findings state scope, magnitude, comparison and limitation; all five business questions are answered or have an evidenced data gap. | Domain analyst |
-| AC8 | D7 | Up to ten investigation cases have reason codes, supporting metrics, an owner and missing-evidence request; at least two priority scenarios show membership/rank changes and rationale. | Specialist policy/operations role |
-| AC9 | D8 | At least five headline BI values reconcile to curated output; all visible filters, reset behaviour, period labels, units and quality warnings are tested. | BI Developer / UAT reviewer |
-| AC10 | D9 | At least ten scenarios include the four mandatory domain cases, calculation, filtering, missingness and reproducibility; expected/actual results and evidence recorded; zero unresolved critical/high defects. | Assurance reviewer |
-| AC11 | D10–D11 | Independent clean rerun evidence, maximum two-page briefing and 15–20 minute presentation exist; every numerical recommendation links to a tested metric/artefact. | Delivery Lead / review panel |
-| AC12 | D12 | Each member has evidence-linked authored and reviewed work, role ownership and presentation/handover contribution; master/team repository distinction maintained. | Delivery Lead |
+| AC1 | D1 | Eight user requirements cover the commissioned questions, named stakeholder actions and core/extension boundary. | Business Analyst / Director of Airport Operations & Resilience |
+| AC2 | D2 | 100% of used source files have approved provenance, version/coverage, licence, retrieval UTC and SHA-256. Required fields and reference versions are checked. | Data Governance Analyst |
+| AC3 | D3 | Every input row is accounted for; keys and all many-to-many/hierarchy effects have explicit checks and no unexplained duplication. | Data Engineer / independent reviewer |
+| AC4 | D4 | Five source cells reconcile within a declared rounding tolerance; all material differences and non-additive totals are explained. | Domain specialist |
+| AC5 | D5 | All 8 metric contracts are classified core/conditional and have tested definitions; no unsupported fields or fabricated unavailable values. | Data Governance Analyst / BI Developer |
+| AC6 | D6 | Five findings cover all business questions or evidence gaps; period, eligible population, magnitude, comparison and limitation are visible. | Domain analyst |
+| AC7 | D7 | The project-specific baseline and alternative below are implemented; eligibility, scenario changes, reason codes and evidence requests are visible. | Director of Airport Operations & Resilience |
+| AC8 | D8 | Five BI measures reconcile to curated outputs; all filters/reset/export retain the scope, units and limitations. | BI Developer / operational UAT user |
+| AC9 | D9 | DT1–DT10 have actual execution evidence and expected/actual outcomes; no unresolved critical/high defect. | Independent reviewer |
+| AC10 | D10 | A distinct member's clean rerun reproduces equivalent core outputs with documented environment and checks. | Independent rerun reviewer |
+| AC11 | D11 | Two-page maximum briefing and 15–20 minute presentation answer the decision and assign investigation owners without unsupported outcomes. | Director of Airport Operations & Resilience / Mettelo panel |
+| AC12 | D12 | Every member links substantive authored and reviewed work, including handover or presentation contribution. | Delivery Lead |
 
-## Required domain acceptance cases
+## Project-specific business success
 
-1. Confirm one source file for each of the eight months and fail on missing or repeated months.
-2. Reconcile five airport/airline figures against source cells.
-3. Demonstrate flight-weighted average delay differs correctly from an unweighted row mean.
-4. Test zero eligible flights, a low-volume route and cancellations excluded from the punctuality denominator.
+1. Exactly eight unique monthly inputs are registered using the same report variant.
+2. All-flight shares and matched-flight mean delay retain their respective denominators.
+3. Every shortlisted segment shows eligible months, flight volume and sensitivity to 100/250-flight gates.
 
-Each case needs test input/reference, expected result, actual result, pass/fail, evidence path, tester, reviewer and execution date. Add cases until there are at least ten; do not count a written assertion as an executed test.
+## Required prioritisation and sensitivity
 
-## Specific analytical sign-off
+Baseline minimum = 100 eligible flights per airport/airline month; sensitivity = 250. Require at least three eligible months and display coverage out of eight. Compare a declared adverse-punctuality reference consistently across months and order by flight-weighted delay burden. Record excluded low-volume cases. Volume gates are simulated design choices and must not be described as CAA standards.
 
-- Separate volume, punctuality, delay distribution and cancellation measures; retain route mix and matched-flight coverage.
-- Show three-month persistence and eight-month coverage for each airport/airline segment.
-- Produce up to ten resilience-investigation cases under at least two minimum-flight thresholds and compare weighted with unweighted summaries.
+Record each case's entity/segment, valid period, supporting measures, reason code, scenario position, missing evidence, responsible operational role, next review and manual-review trigger. Fewer than ten cases is valid; padding unsupported cases fails acceptance.
 
-Reviewers must verify the declared cohort and grain:
+## DT1–DT10 — minimum executed domain tests
 
-Freeze all eight agreed CAA monthly full-analysis CSVs for January–August 2026. The eight months are the core cohort; do not describe them as a full year or infer annual seasonality. Historical 2025 files are optional extensions with their own source records.
+| Test | Input / action | Expected pass evidence |
+| --- | --- | --- |
+| DT1 | Confirm one source file for each of the eight months and fail on missing or repeated months. | Five selected published values reproduce within declared source precision, with explicit source coordinates and scope. |
+| DT2 | Reconcile five airport/airline figures against source cells. | The invalid comparison, join or denominator is rejected or flagged according to the documented rule; no silent fallback. |
+| DT3 | Demonstrate flight-weighted average delay differs correctly from an unweighted row mean. | The edge case produces an explicit unavailable/exclusion result or a supported calculation, with affected rows quantified. |
+| DT4 | Verify zero/low-volume handling and the separate all-flight share versus matched-flight delay denominators. | The domain boundary remains visible in the analytical output and BI product; no unsupported inference. |
+| DT5 | 10 flights averaging 10 minutes and 90 averaging 20 | Weighted delay = 19 minutes, not 15. |
+| DT6 | All-flight delay-band shares include cancellation/unmatched components | Use the documented all-flight basis; do not renormalise to operated flights without a new label. |
+| DT7 | Early-to-15-minutes-late is rebuilt from published sub-bands | Include all appropriate early bands and 0–15 late; publish the exact definition. |
+| DT8 | One domestic movement appears at both reporting airports | Airport observations are not labelled unique UK flights. |
+| DT9 | A segment has 150 eligible flights in a month | Passes 100-flight gate, fails 250-flight sensitivity; exclusion is visible. |
+| DT10 | A full-analysis total differs from a summary report | Investigate coverage/consent and report variant; do not force equality. |
 
-Month × reporting airport × airline × supported route/destination × service/flight category and all other published dimensions. Preserve scheduled, actual, cancelled and matched-flight denominator distinctions.
+Worked values are **synthetic test fixtures**, not claims about the public data or simulated client. For each test retain requirement ID, source/input or fixture, expected result, actual result, evidence link, tester, independent reviewer and date. DT1–DT4 additionally require the documented project-specific rule; their general evidence descriptions do not waive the named domain condition. Add dashboard/filter tests as needed beyond these ten.
 
-## Failed or unavailable evidence
+## Scope gate and unresolved issues
 
-A conditional metric may be marked unavailable when the source lacks its dimensions, with a documented alternative or evidence request. This does not waive the core model, dashboard or assurance. A change to a mandatory requirement needs a change log entry with impact and simulated-panel approval. Missing sources mean the data freeze remains pending; do not mark a source gate passed.
+**Mandatory core:** Eight agreed full-analysis CSVs, January–August 2026. Use one consistent report variant: combined arrival/departure Full Analysis unless a documented variant change is approved. Fix a shortlist of airport/airline segments after profiling; preserve supported route detail for diagnostics. Separate matched-flight delay denominators from all-flight band and cancellation denominators.
 
-Critical/high means a defect materially changes a headline value, cohort, recommendation, provenance or reproducibility. Such defects block final acceptance. Lower-severity limitations need named acceptance and disclosed effect. No stakeholder approval may be invented; record simulated UAT as simulated.
+**Optional extensions:** Full-year seasonality, delay-cause attribution, passenger compensation and operational resource optimisation are outside core. Arrival/departure-specific reports or 2025 history require separately registered sources and compatible definitions.
+
+A mandatory source/field gap blocks the affected deliverable and must be resolved by a registered official replacement or approved, versioned scope change. An explicitly optional result may be unavailable with a reason and a useful evidence request. Neither missing raw data nor unexecuted tests may be marked passed.
+
+A critical/high defect materially changes a headline value, cohort, recommendation, provenance or reproducibility and blocks release. Lower-impact issues require a named acceptance owner and disclosed impact. All panel feedback and approvals must be recorded honestly as simulated where applicable.

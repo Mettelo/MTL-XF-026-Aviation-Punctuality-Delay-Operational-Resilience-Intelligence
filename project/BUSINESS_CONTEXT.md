@@ -1,58 +1,82 @@
 # MTL-XF-026 — Business context
 
-## Organisation and pressure
+## Organisation and decision owner
 
-**Aviation Punctuality, Delay & Operational Resilience Intelligence.** An airport/aviation operations team needs to identify persistent delay patterns by airport/airline rather than overreacting to a single bad month. The output should support resilience planning and operational-performance review.
+**Simulated client:** Confidential Airport Operations & Aviation Strategy Directorate. **Accountable executive:** Director of Airport Operations & Resilience. **Review cadence:** monthly airport/airline performance review.
 
-The simulated sponsor, Confidential Airport Operations & Aviation Strategy Directorate, must decide where to direct limited analytical and service-review attention. Its starting problem is an inconsistent view of aviation punctuality, delay & operational resilience intelligence: totals, rates, periods and categories can lead users to different conclusions without a common definition. The engagement supplies an evidence base; it does not assume the client has already suffered a quantified failure.
+This fictional directorate/board is an engagement scenario, not an assertion of a real client's circumstances. The source data remains official public/open data.
 
-## Current process and its consequences
+## Business problem
 
-Analysts retrieve official tables independently, prepare local summaries and discuss headline differences in management meetings. Without a shared cohort and definition register, revisions, incomparable denominators and missing coverage can pass into recommendations. The consequence is an investigation shortlist that cannot be explained or reproduced, rather than a verified estimate of financial loss.
+Operations leaders receive performance summaries that may mix route volumes, cancellation exposure and operated-flight delay. A small route can appear worse than a busy route on a simple row average, while combining airport records can count domestic movements twice. Leadership needs a defensible comparison before deciding which operating patterns deserve a joint resilience investigation.
 
-## Required decision process
+## Why the current process is insufficient
 
-1. Confirm the reporting cohort and available dimensions.
-2. Review governed metrics and quality exceptions before interpreting patterns.
-3. Compare like-for-like trends and segment evidence against the questions below.
-4. Challenge at least two prioritisation scenarios and document changes in shortlisted cases.
-5. Assign a responsible role, evidence-gathering action and review point to every proposed investigation.
+The current scenario relies on separately prepared reports without a common source/metric contract. The material failure to prevent is specific: Wrong weighting, incompatible denominators, report variants and duplicate airport observations can reverse punctuality comparisons.
 
-**Decision:** Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
+This creates uncertainty over which cases need investigation and which comparisons should be rejected. No quantified loss, backlog, budget deficit or service failure is invented as a client fact.
 
-## Business questions and evidence
+## Stakeholders and decisions
 
-| Question | Expected evidence |
+| Simulated stakeholder | Decision / review responsibility |
 | --- | --- |
-| Which airport/airline combinations have persistent rather than one-month delays? | Reconciled trend/segment table and diagnostic chart with period, grain, denominator and source references. |
-| How do flight volumes and route mix affect apparent performance? | Reconciled trend/segment table and diagnostic chart with period, grain, denominator and source references. |
-| Which delay bands or cancellation measures contribute to deterioration? | Segment or coverage assessment stating which comparisons are supported. |
-| Does a minimum-volume rule alter the investigation shortlist? | Sensitivity or scope audit showing what changes the interpretation. |
-| What operational cause evidence is needed before attributing delay to an organisation? | Investigation plan with missing evidence, owner and decision-review trigger. |
+| Director of Airport Operations & Resilience | Accountable for scope, investigation priorities, accepted limitations and final business sign-off. |
+| Airport Performance Manager | Own performance diagnostics and coverage checks. |
+| Airline Relationship Manager | Take evidence-led questions to airline partners without attributing unverified blame. |
+| Operations Planning Lead | Identify schedule, disruption and resource evidence needed for resilience investigation. |
+| Aviation Data Steward | Approve report variant, denominators, route categories and airline consolidation. |
 
-## Intended management use
+## Commissioned decision
+
+Which airport, airline and supported route combinations show persistent punctuality deterioration across January–August 2026 and warrant operational-resilience investigation?
+
+## Practical management use case
+
+The monthly review opens an airport/airline segment that has missed the team's declared punctuality reference in at least three months. The Performance Manager compares flight-weighted results and shows whether the signal survives a higher volume gate. The Operations Lead then asks for disruption and schedule evidence; the dashboard alone does not assign responsibility to an airline or airport.
+
+## Current-to-target workflow
+
+1. **Before review:** analyst registers the approved files, coverage and definitions; steward checks the cohort and unresolved exceptions.
+2. **At review:** Director of Airport Operations & Resilience opens the overview, then inspects diagnostics and the underlying eligible population before considering a case.
+3. **Challenge:** the relevant stakeholder compares the alternative scenario and asks whether the signal survives missingness, comparability and denominator checks.
+4. **Action:** each accepted case records investigation type, responsible service role, missing evidence, next review and what finding would reverse the recommendation.
+5. **Follow-up:** the next monthly airport/airline performance review records evidence received and the decision, without claiming the analytical signal itself caused an improvement.
+
+## Required analytical response
 
 - Separate volume, punctuality, delay distribution and cancellation measures; retain route mix and matched-flight coverage.
 - Show three-month persistence and eight-month coverage for each airport/airline segment.
 - Produce up to ten resilience-investigation cases under at least two minimum-flight thresholds and compare weighted with unweighted summaries.
 
-The BI executive view starts with the commissioned question, reporting period and coverage. Users inspect a diagnostic view before reading the investigation shortlist. Every case records the signal, its magnitude, uncertainty, alternative explanations, evidence still needed and a next-step owner. The final briefing must explain at least one case where the evidence is insufficient for action.
+## Measurable project outcomes
 
-## Measures of project value
+1. Exactly eight unique monthly inputs are registered using the same report variant.
+2. All-flight shares and matched-flight mean delay retain their respective denominators.
+3. Every shortlisted segment shows eligible months, flight volume and sensitivity to 100/250-flight gates.
 
-Success means a repeatable review with five supported findings, five reconciled dashboard measures, two compared decision scenarios, ten UAT scenarios and a reproducible handover. Teams may propose a future operational baseline and improvement target, but must label these as proposed measures rather than achieved benefits. No observed savings or service improvement can be claimed from this simulated engagement alone.
+## Proposed benefit monitoring
 
-## Interpretation and evidence limits
+At kickoff, record a baseline review process and propose measures for: time to regenerate the agreed evidence pack; proportion of agenda recommendations with a complete evidence chain; and proportion of accepted investigations with a role owner and next review. The target for recommendation traceability and ownership is 100%; regeneration time is measured during the independent rerun, with no fabricated pre-project baseline or claimed reduction. These are proposed management measures, not achieved service benefits.
+
+## Scope and evidence limits
+
+**Core:** Eight agreed full-analysis CSVs, January–August 2026. Use one consistent report variant: combined arrival/departure Full Analysis unless a documented variant change is approved. Fix a shortlist of airport/airline segments after profiling; preserve supported route detail for diagnostics. Separate matched-flight delay denominators from all-flight band and cancellation denominators.
+
+**Extensions:** Full-year seasonality, delay-cause attribution, passenger compensation and operational resource optimisation are outside core. Arrival/departure-specific reports or 2025 history require separately registered sources and compatible definitions.
 
 - Eight months cannot establish full annual seasonality or causal responsibility for delays.
 - Average percentages must be weighted with the correct eligible flights; missing/cancelled flights need explicit treatment.
 - Aviation performance signals require operational event, weather and schedule evidence before attributing cause.
 
-## Dependencies and risks
+## Risks, mitigations and escalation
 
-- Source/schema validation may narrow the scope: record an explicit impact decision rather than inventing fields.
-- Data revisions may alter findings: preserve immutable source manifests and rerun comparisons.
-- Small, suppressed or non-comparable segments may distort ordering: apply eligibility rules and show excluded cases.
-- Local context or operational records may be missing: attach an evidence request to the relevant recommendation.
+- **Interpretation risk:** Wrong weighting, incompatible denominators, report variants and duplicate airport observations can reverse punctuality comparisons. The domain specialist reviews definitions and DT1–DT10 before sign-off.
+- **Source risk:** Monthly directory, first agreed CSV link, method notes and stated reuse constraints verified; all eight payload schemas/checksums and period-specific notices pending. The steward records unresolved items at G1; mandatory gaps block dependent outputs.
+- **Decision risk:** prioritisation assumptions may affect which cases appear. Show alternative scenarios, excluded cases and evidence that could change a recommendation.
+- **Delivery risk:** limited time or skills can leave undocumented manual steps. Assign a second-member rerun and retain contribution/review evidence throughout the eight weeks.
 
-The domain roles in [the brief](PROJECT_BRIEF.md) own interpretation; the simulated review panel owns decisions.
+## Evidence chain
+
+Stakeholder requirement → registered source and valid cohort → governed field/metric → tested transformation → reconciled finding → scenario reason code → investigation owner/evidence request → simulated UAT and sign-off.
+
+Every major recommendation must be traceable through this chain.

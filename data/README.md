@@ -1,57 +1,44 @@
-# MTL-XF-026 — Data workspace
+# MTL-XF-026 — Data workspace and support gate
 
-## Required sources and cohort
+## Core contract
 
-CAA monthly full-analysis CSVs. Historical punctuality data is retained back many years; 2026 files are small, generally under 1 MB each.
+Eight agreed full-analysis CSVs, January–August 2026. Use one consistent report variant: combined arrival/departure Full Analysis unless a documented variant change is approved. Fix a shortlist of airport/airline segments after profiling; preserve supported route detail for diagnostics. Separate matched-flight delay denominators from all-flight band and cancellation denominators.
 
-Freeze all eight agreed CAA monthly full-analysis CSVs for January–August 2026. The eight months are the core cohort; do not describe them as a full year or infer annual seasonality. Historical 2025 files are optional extensions with their own source records.
+## Optional work
 
-[Source register and exact URLs](SOURCE_REGISTER.md)
+Full-year seasonality, delay-cause attribution, passenger compensation and operational resource optimisation are outside core. Arrival/departure-specific reports or 2025 history require separately registered sources and compatible definitions.
 
-**Current state:** specification only. No raw datasets have been downloaded or uploaded in this build. Expected size, row count and history statements from the earlier agreement require verification against the actual files. Do not mark the cohort frozen until the manifest and metadata are complete.
+## Acquisition state
 
-## Controlled acquisition and preparation
+No raw data is uploaded by this update. Official documentation checks are recorded in [SOURCE_REGISTER.md](SOURCE_REGISTER.md). File payloads, full schemas, bytes/checksums and final reuse/freeze approvals remain pending where stated. Keep publication-level evidence distinct from acquired-file evidence.
 
-1. Read [SOURCE_REGISTER.md](SOURCE_REGISTER.md); use the exact agreed URLs and official publisher documentation.
-2. Validate that the response is the expected CSV/ODS/XLSX/ZIP rather than an error page. Inspect archive contents and sheet names where relevant.
-3. Record resolved URL, UTC retrieval, release, coverage, filename, bytes, SHA-256 and licence evidence. Log discrepancies before changing sources.
-4. Preserve original bytes in an approved immutable snapshot; later upload only where instructed and redistribution is permitted.
-5. Record source fields, types, valid values, suppression, units and publisher methodology in [metadata](metadata/README.md).
-6. Implement the analytical grain below, verify keys/cardinality and account for excluded/quarantined records.
-7. Reconcile at least five published measures and create curated outputs reproducibly in the team repository.
+## Required source-to-deliverable matrix
 
-## Analytical grain
+Before analysis, create a row per headline measure/required comparison:
+
+`requirement_id | deliverable_id | metric | core_or_extension | source_id | actual_field_or_sheet | valid_grain | coverage | unit_denominator | metadata_evidence | support_status | owner | decision`
+
+Allowed support statuses: documentation-supported; payload-verified; unsupported; optional-not-activated. “Documentation-supported” alone is insufficient for a completed data freeze. If a mandatory field is absent, block its output and resolve the source or approved scope; do not fabricate values or silently waive the requirement.
+
+## Controlled preparation
+
+1. Use registered exact URLs and inspect actual content type, archive members or sheets.
+2. Record version, resolved URL, separate retrieval timestamps, bytes, SHA-256 and licence evidence.
+3. Approve the actual cohort and scope matrix at G1.
+4. Preserve original bytes; transform into curated facts with documented types, keys, hierarchies and joins.
+5. Account for retained/excluded/quarantined rows and quantify all mapping gaps.
+6. Reconcile five source values and execute [DT1–DT10](../project/ACCEPTANCE_CRITERIA.md).
+
+## Model and measures
 
 Month × reporting airport × airline × supported route/destination × service/flight category and all other published dimensions. Preserve scheduled, actual, cancelled and matched-flight denominator distinctions.
 
-## Required metric contract
+The core contract above controls conditional dimensions. Metric formulas have one authoritative home: [DELIVERABLES.md](../project/DELIVERABLES.md). Do not create another incompatible formula copy in the data README.
 
-| Metric | Required definition / calculation |
-| --- | --- |
-| Eligible flight volume | Published matched/eligible flights under the source definition; identify flights excluded from punctuality calculation. |
-| On-time share | Published on-time percentage under the exact CAA tolerance; recompute only with compatible numerator and denominator. |
-| Average delay minutes | Flight-weighted average = sum(mean delay × eligible flights) / sum(eligible flights) for compatible rows. |
-| Severe-delay share | Published or reconstructed delay-band share for a declared threshold; do not invent unreported bands. |
-| Cancellation share | 100 × cancelled flights / publisher-compatible scheduled flights, only if both are available. |
-| Month-to-month change | Current on-time share minus previous comparable-month share, in percentage points. |
-| Persistent-pressure flag | Adverse threshold exceeded in at least three observed months; report available months and volume gate. |
-| Monthly coverage | Observed eligible months / eight required cohort months. |
+## Data areas
 
-## Mandatory quality risks
+- [Raw snapshots](raw/README.md): unmodified source bytes only when later authorised and permitted.
+- [Reference data](reference/README.md): category/entity/period mappings with version and cardinality.
+- [Metadata](metadata/README.md): manifest, dictionary, methodology, lineage and support/freeze decisions.
 
-- Eight months cannot establish full annual seasonality or causal responsibility for delays.
-- Average percentages must be weighted with the correct eligible flights; missing/cancelled flights need explicit treatment.
-- Aviation performance signals require operational event, weather and schedule evidence before attributing cause.
-
-1. Confirm one source file for each of the eight months and fail on missing or repeated months.
-2. Reconcile five airport/airline figures against source cells.
-3. Demonstrate flight-weighted average delay differs correctly from an unweighted row mean.
-4. Test zero eligible flights, a low-volume route and cancellations excluded from the punctuality denominator.
-
-## Folder ownership
-
-- [raw](raw/README.md): unmodified approved source snapshots; guidance only at present.
-- [reference](reference/README.md): governed code lists, hierarchies and crosswalks.
-- [metadata](metadata/README.md): source notices, schema, glossary, lineage and manifest evidence.
-
-Curated data, processing code, logs and test results belong in the team delivery repository. Preserve a reproducible boundary between source inputs and generated products. Do not add personal, confidential or paid-source data.
+**Specific control:** Wrong weighting, incompatible denominators, report variants and duplicate airport observations can reverse punctuality comparisons.
